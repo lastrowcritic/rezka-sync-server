@@ -1,0 +1,8 @@
+Options -Indexes
+# When this whole folder is uploaded into the web space, send every request to public/,
+# so app/, migrations/ and config.php can never be downloaded.
+<FilesMatch "^(config\.php|config\.example\.php)$">
+    Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^(?!public/)(.*)$ public/$1 [L]
